@@ -37,7 +37,7 @@
                         <div class="form-group row">
                             <div class="col-md-2"><label for="address">Address</label></div>
                             <div class="col-md-9">
-                                <input type="text" name="address" class="form-control" id="address" placeholder="address...">
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Address...">
                             </div>
                         </div>
 
@@ -46,6 +46,7 @@
                         <div id="map" style="border: 1px solid black;">
                             <iframe width="100%" id="iframeMap" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="">
                             </iframe>
+                            <span id="loadDate"></span>
                             <span id="msg" style="padding: 20px;"></span>
                             <!-- <a href="#" onclick="getLocation()">Location Permission</a> -->
                         </div>
@@ -72,6 +73,8 @@
         let iframe = $("#iframeMap");
         let msg = $("#msg");
 
+        getLocation();
+
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
@@ -84,9 +87,86 @@
                 msg.html("Geolocation is not supported by this browser.");
             }
         }
-        getLocation();
 
         function showPosition(position) {
+            let time = new Date(position.timestamp).toLocaleString('en-IN', {
+                timeZone: 'Asia/Kolkata',
+                year: 'numeric',
+                month: 'short',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: "2-digit",
+                hour12: true
+            });
+
+            // Date Format
+            // date.toLocaleDateString("en-IN",{year:"2-digit",month:"2-digit", day:"2-digit"})
+            // For date : .toLocaleDateString('en-IN', {day: "numeric"})
+            // For month in full : .toLocaleDateString('en-IN', {month: "long"})
+            // For month in short : .toLocaleDateString('en-IN', {month: "short"})
+            // For day in full : .toLocaleDateString('en-IN', {day: "long"})
+            // For dayin short: .toLocaleDateString('en-IN', {day: "short"})
+            // Date Format End
+
+            // Country List
+            //         var countries = [
+            //     "ar-SA",
+            //     "bn-BD",
+            //     "bn-IN",
+            //     "cs-CZ",
+            //     "da-DK",
+            //     "de-AT",
+            //     "de-CH",
+            //     "de-DE",
+            //     "el-GR",
+            //     "en-AU",
+            //     "en-CA",
+            //     "en-GB",
+            //     "en-IE",
+            //     "en-IN",
+            //     "en-NZ",
+            //     "en-US",
+            //     "en-ZA",
+            //     "es-AR",
+            //     "es-CL",
+            //     "es-CO",
+            //     "es-ES",
+            //     "es-MX",
+            //     "es-US",
+            //     "fi-FI",
+            //     "fr-BE",
+            //     "fr-CA",
+            //     "fr-CH",
+            //     "fr-FR",
+            //     "he-IL",
+            //     "hi-IN",
+            //     "hu-HU",
+            //     "id-ID",
+            //     "it-CH",
+            //     "it-IT",
+            //     "ja-JP",
+            //     "ko-KR",
+            //     "nl-BE",
+            //     "nl-NL",
+            //     "no-NO",
+            //     "pl-PL",
+            //     "pt-BR",
+            //     "pt-PT",
+            //     "ro-RO",
+            //     "ru-RU",
+            //     "sk-SK",
+            //     "sv-SE",
+            //     "ta-IN",
+            //     "ta-LK",
+            //     "th-TH",
+            //     "tr-TR",
+            //     "zh-CN",
+            //     "zh-HK",
+            //     "zh-TW"
+            //   ];
+
+            $('#loadDate').html(`Map Rander : ${time}`).css('color', 'green');
             iframe.show()
             msg.hide();
             latitude.value = position.coords.latitude;
@@ -106,9 +186,10 @@
                 div.hide()
             } else {
                 div.show()
-                let url = `https://maps.google.com/maps?q=${val}&output=embed`;
+                let url = `https://maps.google.com/maps?q=${val}&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;&output=embed`;
                 iframe.attr('src', url)
             }
+
 
         })
     </script>
