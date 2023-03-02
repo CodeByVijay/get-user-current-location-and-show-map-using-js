@@ -33,8 +33,10 @@
                     </div>
                 </div>
 
-                <iframe width="300" id="iframeMap" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="">
-                </iframe>
+                <div id="map" style="border: 1px solid black;">
+                    <iframe width="100%" id="iframeMap" height="170" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="">
+                    </iframe>
+                </div>
                 <span id="msg"></span>
 
             </div>
