@@ -166,7 +166,7 @@
             //     "zh-TW"
             //   ];
 
-            $('#loadDate').html(`Map Rander : ${time}`).css('color', 'green');
+            $('#loadDate').html(`Map Render : ${time}`).css('color', 'green');
             iframe.show()
             msg.hide();
             latitude.value = position.coords.latitude;
