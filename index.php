@@ -106,7 +106,7 @@
             // For month in full : .toLocaleDateString('en-IN', {month: "long"})
             // For month in short : .toLocaleDateString('en-IN', {month: "short"})
             // For day in full : .toLocaleDateString('en-IN', {day: "long"})
-            // For dayin short: .toLocaleDateString('en-IN', {day: "short"})
+            // For day in short: .toLocaleDateString('en-IN', {day: "short"})
             // Date Format End
 
             // Country List
