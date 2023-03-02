@@ -81,7 +81,7 @@
                 if (latitude.value.length === 0 || longitude.value.length === 0) {
                     iframe.hide()
                     msg.addClass('text-danger')
-                    msg.html("Location Permission Denide.");
+                    msg.html("Location Permission denied.");
                 }
             } else {
                 msg.html("Geolocation is not supported by this browser.");
